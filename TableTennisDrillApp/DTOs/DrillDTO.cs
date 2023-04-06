@@ -10,7 +10,7 @@ namespace TableTennisDrillApp.DTOs
     public class DrillDTO
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public TimeSpan DurationTime { get; set; }
         public TimeSpan BreakTime { get; set; }
         public int PlayersNumber { get; set; }
