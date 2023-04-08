@@ -16,8 +16,10 @@ namespace TableTennisDrillApp.Models
         public DrillAdvancementLevel AdvancementLevel { get; }
         public List<string>? KeyWords { get; }
         public List<string>? Description { get; }
+        public List<string?> Images { get; }
+        public List<string?> Videos { get; }
 
-        public Drill(TimeSpan durationTime, TimeSpan breakTime, PlayersNumber numberOfPlayers, DrillAdvancementLevel advancementLevel, List<string>? keyWords, List<string>? description)
+        public Drill(TimeSpan durationTime, TimeSpan breakTime, PlayersNumber numberOfPlayers, DrillAdvancementLevel advancementLevel, List<string>? keyWords, List<string>? description, List<string?> images, List<string?> videos)
         {
             DurationTime = durationTime;
             BreakTime = breakTime;
@@ -25,6 +27,8 @@ namespace TableTennisDrillApp.Models
             AdvancementLevel = advancementLevel;
             KeyWords = keyWords;
             Description = description;
+            Images = images;
+            Videos = videos;
         }
     }
 }

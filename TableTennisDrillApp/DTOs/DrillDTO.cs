@@ -17,5 +17,7 @@ namespace TableTennisDrillApp.DTOs
         public int AdvancementLevel { get; set; }
         public string? KeyWords { get; set; }
         public string? Description { get; set; }
+        public string? Images { get; set; }
+        public string? Videos { get; set; }
     }
 }

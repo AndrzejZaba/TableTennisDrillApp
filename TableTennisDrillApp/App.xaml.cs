@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using TableTennisDrillApp.Services.DrillsProviders;
+using TableTennisDrillApp.ViewModels;
 
 namespace TableTennisDrillApp
 {
@@ -20,6 +21,8 @@ namespace TableTennisDrillApp
         {
             _drillsProvider = new DatabaseDrillsProvider();
             var drills = _drillsProvider.GetAllDrills();
+
+            var a = new DrillsLibraryMenuViewModel();
 
             var n = 1;
         }

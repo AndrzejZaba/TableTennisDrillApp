@@ -27,14 +27,15 @@ namespace TableTennisDrillApp.Services.DrillsProviders
 
         private static Drill ToDrill(DrillDTO drillDTO)
         {
-            var keyWords = drillDTO.KeyWords.Split(',').ToList();
             return new Drill(
                 drillDTO.DurationTime,
                 drillDTO.BreakTime,
                 (PlayersNumber)drillDTO.PlayersNumber,
                 (DrillAdvancementLevel)drillDTO.AdvancementLevel,
-                drillDTO.KeyWords.Split(',').ToList(),
-                drillDTO.Description.Split(',').ToList()
+                drillDTO.KeyWords?.Split(',').ToList(),
+                drillDTO.Description?.Split(',').ToList(),
+                drillDTO.Images?.Split(',').ToList(),
+                drillDTO.Videos?.Split(',').ToList()
                 );
         }
     }
