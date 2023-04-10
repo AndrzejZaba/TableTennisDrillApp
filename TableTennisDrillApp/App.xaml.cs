@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using System.Windows;
 using TableTennisDrillApp.Services.DrillsProviders;
 using TableTennisDrillApp.ViewModels;
+using TableTennisDrillApp.ViewModels.CategoriesViewModels;
 
 namespace TableTennisDrillApp
 {
@@ -17,6 +19,12 @@ namespace TableTennisDrillApp
     {
         private IDrillsProvider _drillsProvider;
 
+        public App()
+        {
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            mainWindow.DataContext = new CategoryListViewModel();
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
             _drillsProvider = new DatabaseDrillsProvider();

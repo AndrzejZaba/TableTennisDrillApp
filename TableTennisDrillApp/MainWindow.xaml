@@ -6,14 +6,16 @@
         xmlns:views="clr-namespace:TableTennisDrillApp.Views"
         xmlns:local="clr-namespace:TableTennisDrillApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="320"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <views:DrillsListMenuView />
+        <views:DrillsListMenuView Grid.Column="0"/>
+
+        <Border Grid.Column="1" Background="#21130d"/>
 
     </Grid>
 </Window>

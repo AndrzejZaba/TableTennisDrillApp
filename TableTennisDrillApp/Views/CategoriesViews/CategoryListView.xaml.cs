@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TableTennisDrillApp.ViewModels.CategoriesViewModels;
 
 namespace TableTennisDrillApp.Views.CategoriesViews
 {
@@ -23,6 +24,7 @@ namespace TableTennisDrillApp.Views.CategoriesViews
         public CategoryListView()
         {
             InitializeComponent();
+            //this.DataContext = new CategoryListViewModel();
         }
     }
 }

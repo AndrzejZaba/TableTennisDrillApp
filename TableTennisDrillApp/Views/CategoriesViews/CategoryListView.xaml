@@ -2,17 +2,29 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:ViewModelsCategries="clr-namespace:TableTennisDrillApp.ViewModels.CategoriesViewModels" 
+             xmlns:vmc="clr-namespace:TableTennisDrillApp.ViewModels.CategoriesViewModels" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TableTennisDrillApp.Views.CategoriesViews"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="300">
-    <Grid DataContext="{x:Static ViewModelsCategries:CategoryListViewModel.Instance}">
+             d:DesignHeight="180" d:DesignWidth="300">
+
+    <UserControl.DataContext>
+        <vmc:CategoryListViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding Categories}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:CategoryListItemControl />
+                            <ToggleButton Content="{Binding Path=CategoryName}"
+                                          IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                                          Foreground="White" 
+                                          Background="#2596be"
+                                          FontSize="14"
+                                          FontWeight="Medium"
+                                          Width="100"
+                                          Margin="2"></ToggleButton>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

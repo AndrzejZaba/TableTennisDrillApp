@@ -1,38 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TableTennisDrillApp.KeyWords;
 
 namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
 {
-    public class CategoryListViewModel
+    public class CategoryListViewModel : ViewModelBase
     {
-        public List<CategoryListItemViewModel> Categories { get; set; }
+        private readonly ObservableCollection<CategoryListItemViewModel> _categories;
+        public IEnumerable<CategoryListItemViewModel> Categories => _categories;
 
-        public static CategoryListViewModel Instance => new CategoryListViewModel();
-
+        public List<string> KeyWords { get; set; }
         public CategoryListViewModel()
         {
-            Categories = new List<CategoryListItemViewModel>()
+            _categories = new ObservableCollection<CategoryListItemViewModel>();
+            GetListOfKeywords();
+            PrepareCategories();
+        }
+
+        public void GetListOfKeywords()
+        {
+            KeyWords = new List<string>();
+            var list = typeof(KeyWord).GetFields().Select(x => x.GetValue(typeof(KeyWord))).ToList();
+
+            foreach (var item in list)
             {
-                new CategoryListItemViewModel{
-                    CategoryName ="FH" 
-                },
-                new CategoryListItemViewModel{
-                    CategoryName ="BH" 
-                },
-                new CategoryListItemViewModel{
-                    CategoryName ="Push" 
-                },
-                new CategoryListItemViewModel{
-                    CategoryName ="Drive" 
-                }
-                ,new CategoryListItemViewModel{
-                    CategoryName ="Serve" 
-                },
-              
-            };
+                KeyWords.Add(item.ToString());
+            }
+        }
+
+        public void PrepareCategories()
+        {
+            foreach (var keyWord in KeyWords) 
+            {
+                CategoryListItemViewModel category = new CategoryListItemViewModel(keyWord);
+                _categories?.Add(category);
+            }
         }
     }
 }

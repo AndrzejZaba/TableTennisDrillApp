@@ -13,19 +13,7 @@
         <vms:DrillsLibraryMenuViewModel/>
     </UserControl.DataContext>
     
-    <UserControl.Resources>
-        <Style x:Name="MyToggleStyle" TargetType="ToggleButton">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Border BorderThickness="3" BorderBrush="Green" Width="30" Height="30" Background="Gray">
-                        
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
+
     
     <Grid Background="Black">
         <Grid.ColumnDefinitions>
@@ -35,7 +23,7 @@
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="180"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Training Library" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
