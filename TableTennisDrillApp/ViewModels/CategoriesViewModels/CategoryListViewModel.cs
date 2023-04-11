@@ -11,12 +11,15 @@ namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
     public class CategoryListViewModel : ViewModelBase
     {
         private readonly ObservableCollection<CategoryListItemViewModel> _categories;
+        private readonly ObservableCollection<CategoryListItemViewModel> _selectedCategories;
         public IEnumerable<CategoryListItemViewModel> Categories => _categories;
+        public ICollection<CategoryListItemViewModel> SelectedCategories => _selectedCategories;
 
         public List<string> KeyWords { get; set; }
         public CategoryListViewModel()
         {
             _categories = new ObservableCollection<CategoryListItemViewModel>();
+            _selectedCategories = new ObservableCollection<CategoryListItemViewModel>();
             GetListOfKeywords();
             PrepareCategories();
         }
@@ -36,7 +39,7 @@ namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
         {
             foreach (var keyWord in KeyWords) 
             {
-                CategoryListItemViewModel category = new CategoryListItemViewModel(keyWord);
+                CategoryListItemViewModel category = new CategoryListItemViewModel(keyWord, this);
                 _categories?.Add(category);
             }
         }

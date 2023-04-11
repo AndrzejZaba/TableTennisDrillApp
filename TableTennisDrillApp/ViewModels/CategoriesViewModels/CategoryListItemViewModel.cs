@@ -8,6 +8,7 @@ namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
 {
     public class CategoryListItemViewModel : ViewModelBase
     {
+        private CategoryListViewModel listViewModel;
         private string? _categoryName;
         public string? CategoryName
         {
@@ -33,12 +34,22 @@ namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
             {
                 _isChecked = value;
                 OnPropertyChanged(nameof(IsChecked));
+
+                if(_isChecked == true)
+                {
+                    listViewModel.SelectedCategories.Add(this);
+                }
+                else
+                {
+                    listViewModel.SelectedCategories.Remove(this);
+                }
             }
         }
 
-        public CategoryListItemViewModel(string categoryName)
+        public CategoryListItemViewModel(string categoryName, CategoryListViewModel listViewModel)
         {
             CategoryName = categoryName;
+            this.listViewModel = listViewModel;
         }
     }
 }

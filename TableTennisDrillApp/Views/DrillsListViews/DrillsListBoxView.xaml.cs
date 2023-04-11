@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TableTennisDrillApp.ViewModels.CategoriesViewModels;
 
-namespace TableTennisDrillApp.Views.CategoriesViews
+namespace TableTennisDrillApp.Views.DrillsListViews
 {
     /// <summary>
-    /// Interaction logic for CategoryListView.xaml
+    /// Interaction logic for DrillsListBoxView.xaml
     /// </summary>
-    public partial class CategoryListView : UserControl
+    public partial class DrillsListBoxView : UserControl
     {
-        public CategoryListView()
+        public DrillsListBoxView()
         {
             InitializeComponent();
         }
