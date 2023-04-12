@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TableTennisDrillApp.Views"
              xmlns:CategoriesViews="clr-namespace:TableTennisDrillApp.Views.CategoriesViews"
+             xmlns:DrillsListViews="clr-namespace:TableTennisDrillApp.Views.DrillsListViews"
              xmlns:vms="clr-namespace:TableTennisDrillApp.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="320">
@@ -24,6 +25,8 @@
             <TextBlock Grid.Row="0" Text="Training Library" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
 
             <CategoriesViews:CategoryListView Grid.Row="1" DataContext="{Binding CategoryListVM}"/>
+
+            <DrillsListViews:DrillsListView Grid.Row="2" DataContext="{Binding DrillsListVM}" Margin="0 40 0 0"/>
 
         </Grid>
         <TextBlock Grid.Column="1" Text="vvv" Foreground="White" VerticalAlignment="Center"/>

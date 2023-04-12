@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace TableTennisDrillApp.Views.DrillsListViews
 {
     /// <summary>
-    /// Interaction logic for DrillsListBoxView.xaml
+    /// Interaction logic for DrillsListView.xaml
     /// </summary>
-    public partial class DrillsListBoxView : UserControl
+    public partial class DrillsListView : UserControl
     {
-        public DrillsListBoxView()
+        public DrillsListView()
         {
             InitializeComponent();
         }

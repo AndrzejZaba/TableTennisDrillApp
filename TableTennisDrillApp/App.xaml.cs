@@ -33,8 +33,6 @@ namespace TableTennisDrillApp
             MainWindow.Show();
             
 
-            _drillsProvider = new DatabaseDrillsProvider();
-            var drills = _drillsProvider.GetAllDrills();
 
             var a = new DrillsLibraryMenuViewModel();
 

@@ -14,6 +14,10 @@ namespace TableTennisDrillApp.Services.DrillsProviders
 {
     public class DatabaseDrillsProvider : IDrillsProvider
     {
+        /// <summary>
+        /// Get all drills from database
+        /// </summary>
+        /// <returns>IEnumerable of Drill model objects</returns>
         IEnumerable<Drill> IDrillsProvider.GetAllDrills()
         {
             var connectionString = "Server=DESKTOP-B6CMF7A\\SQLEXPRESS;Database=TableTennisDrills;Trusted_Connection=True;encrypt=False;";
@@ -25,6 +29,11 @@ namespace TableTennisDrillApp.Services.DrillsProviders
             }
         }
 
+        /// <summary>
+        /// Converts DrillDTO into Drill model
+        /// </summary>
+        /// <param name="drillDTO">DrillDTO object to be converted</param>
+        /// <returns>Drill model object</returns>
         private static Drill ToDrill(DrillDTO drillDTO)
         {
             return new Drill(

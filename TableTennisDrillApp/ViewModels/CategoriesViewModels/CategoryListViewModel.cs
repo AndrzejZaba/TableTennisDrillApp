@@ -24,6 +24,9 @@ namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
             PrepareCategories();
         }
 
+        /// <summary>
+        /// Creates a list of KeyWords which are strings from KeyWord.cs file
+        /// </summary>
         public void GetListOfKeywords()
         {
             KeyWords = new List<string>();
@@ -35,6 +38,9 @@ namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
             }
         }
 
+        /// <summary>
+        /// Creates a list of CategoryListItemViewModel objects from a list of KeyWords
+        /// </summary>
         public void PrepareCategories()
         {
             foreach (var keyWord in KeyWords) 
