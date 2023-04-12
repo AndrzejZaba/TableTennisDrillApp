@@ -1,24 +1,21 @@
-﻿using System;
+﻿using Microsoft.Identity.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TableTennisDrillApp.KeyWords;
+using TableTennisDrillApp.ViewModels.CategoriesViewModels;
 
 namespace TableTennisDrillApp.ViewModels
 {
-    public class DrillsLibraryMenuViewModel
+    public class DrillsLibraryMenuViewModel : ViewModelBase
     {
-        public List<string> KeyWords { get; set; }
+        public CategoryListViewModel CategoryListVM { get; }
+
         public DrillsLibraryMenuViewModel()
         {
-            KeyWords = new List<string>();
-            var list = typeof(KeyWord).GetFields().Select(x => x.GetValue(typeof(KeyWord))).ToList();
-
-            foreach (var item in list)
-            {
-                KeyWords.Add(item.ToString());
-            }
+            CategoryListVM = new CategoryListViewModel();
         }
     }
 }

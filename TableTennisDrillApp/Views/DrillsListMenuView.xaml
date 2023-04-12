@@ -9,12 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="320">
 
-    <UserControl.DataContext>
-        <vms:DrillsLibraryMenuViewModel/>
-    </UserControl.DataContext>
-    
 
-    
     <Grid Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -28,7 +23,7 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Training Library" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
 
-            <CategoriesViews:CategoryListView Grid.Row="1"/>
+            <CategoriesViews:CategoryListView Grid.Row="1" DataContext="{Binding CategoryListVM}"/>
 
         </Grid>
         <TextBlock Grid.Column="1" Text="vvv" Foreground="White" VerticalAlignment="Center"/>

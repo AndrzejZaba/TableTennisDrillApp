@@ -21,12 +21,18 @@ namespace TableTennisDrillApp
 
         public App()
         {
-            var mainWindow = new MainWindow();
-            mainWindow.Show();
-            mainWindow.DataContext = new CategoryListViewModel();
+            
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel()
+            };
+            MainWindow.Show();
+            
+
             _drillsProvider = new DatabaseDrillsProvider();
             var drills = _drillsProvider.GetAllDrills();
 
