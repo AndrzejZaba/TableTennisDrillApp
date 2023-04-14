@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <Style x:Key="DrillListItemRadioButton" TargetType="RadioButton">
+        <Setter Property="Height" Value="90" />
+        <Setter Property="Width" Value="280" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border BorderThickness="2" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="8" Background="#052D40">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Column="0" Grid.RowSpan="3" Grid.Row="0" Margin="10" BorderBrush="#0099ff" Background="Black" BorderThickness="2">
+
+                            </Border>
+
+                            <TextBlock 
+                                            Grid.Row="0" 
+                                            Grid.Column="1" 
+                                            Text="{Binding DrillName}"  
+                                            TextWrapping="Wrap"
+                                            FontSize="28"
+                                            FontWeight="Medium"
+                                            Foreground="White"/>
+
+                            <TextBlock 
+                                            Grid.Row="1" 
+                                            Grid.Column="1" 
+                                            Text="{Binding AdvancementLevel}"  
+                                            TextWrapping="Wrap"
+                                            FontSize="12"
+                                            FontWeight="Medium"
+                                            Foreground="LightGray"/>
+
+                            <ItemsControl ItemsSource="{Binding KeyWords}" Grid.Column="1" Grid.Row="2">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="White" BorderThickness="1.5" Margin="0 0 8 2">
+                                            <TextBlock Text="{Binding}" Foreground="White" TextAlignment="Center" VerticalAlignment="Center" Margin="4 2 4 2"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="BorderBrush" Value="Red" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="BorderBrush" Value="#0099ff" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    
+    
+</ResourceDictionary>
