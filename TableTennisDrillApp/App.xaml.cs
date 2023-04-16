@@ -30,6 +30,8 @@ namespace TableTennisDrillApp
             {
                 DataContext = new MainViewModel()
             };
+
+
             MainWindow.Show();
             
 

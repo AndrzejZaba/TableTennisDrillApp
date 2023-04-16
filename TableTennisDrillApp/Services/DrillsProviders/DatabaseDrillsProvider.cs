@@ -18,13 +18,13 @@ namespace TableTennisDrillApp.Services.DrillsProviders
         /// Get all drills from database
         /// </summary>
         /// <returns>IEnumerable of Drill model objects</returns>
-        IEnumerable<Drill> IDrillsProvider.GetAllDrills()
+        public async Task<IEnumerable<Drill>> GetAllDrills()
         {
             var connectionString = "Server=DESKTOP-B6CMF7A\\SQLEXPRESS;Database=TableTennisDrills;Trusted_Connection=True;encrypt=False;";
             var sqlQuery = "SELECT * FROM [TableTennisDrills].[dbo].[Drills]";
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                var drillsDTOs = connection.Query<DrillDTO>(sqlQuery);
+                var drillsDTOs = await connection.QueryAsync<DrillDTO>(sqlQuery);
                 return drillsDTOs.Select(r => ToDrill(r)).ToList();
             }
         }
