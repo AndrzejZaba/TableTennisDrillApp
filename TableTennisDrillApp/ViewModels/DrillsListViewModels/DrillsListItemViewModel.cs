@@ -11,7 +11,9 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
 {
     public class DrillsListItemViewModel : ViewModelBase
     {
+        private readonly DrillsListViewModel _drillsListViewModel;
         private readonly Drill? _drill;
+        public Drill? SoredDrill => _drill;
         public string? DrillName => _drill.NumberOfPlayers.ToString();
         public string? Image => _drill.Images?.First();
         public string? AdvancementLevel => _drill.AdvancementLevel.ToString();
@@ -28,16 +30,18 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             {
                 _isSelected = value;
                 OnPropertyChanged(nameof(IsSelected));
-
+                _drillsListViewModel.ActiveDrill = this.SoredDrill;
             }
         }
 
         public void GetKewords() => KeyWords = new ObservableCollection<string>(list: _drill.KeyWords);
 
-        public DrillsListItemViewModel(Drill drill)
+        public DrillsListItemViewModel(Drill drill, DrillsListViewModel drillsListViewModel)
         {
             _drill = drill;
             GetKewords();
+            _drillsListViewModel = drillsListViewModel;
+
         }
     }
 }

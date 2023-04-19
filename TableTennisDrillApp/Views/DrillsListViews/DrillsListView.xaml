@@ -8,9 +8,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
 
-    <d:UserControl.DataContext>
+    <!--<d:UserControl.DataContext>
         <vmd:DrillsListViewModel/>
-    </d:UserControl.DataContext>
+    </d:UserControl.DataContext>-->
     <UserControl.Resources>
         <Style x:Key="Item" TargetType="RadioButton">
             <Style.Triggers>

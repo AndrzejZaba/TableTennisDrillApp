@@ -6,9 +6,12 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using System.Windows;
+using TableTennisDrillApp.Models;
 using TableTennisDrillApp.Services.DrillsProviders;
+using TableTennisDrillApp.Stores;
 using TableTennisDrillApp.ViewModels;
 using TableTennisDrillApp.ViewModels.CategoriesViewModels;
+using TableTennisDrillApp.ViewModels.DrillsListViewModels;
 
 namespace TableTennisDrillApp
 {
@@ -17,28 +20,40 @@ namespace TableTennisDrillApp
     /// </summary>
     public partial class App : Application
     {
-        private IDrillsProvider _drillsProvider;
+       // private DrillsLibraryMenuViewModel _drillsLibraryMenuViewModel;
+        private readonly DrillLibrary _drillLibrary;
+        private readonly IDrillsProvider _drillsProvider;
 
         public App()
         {
-            
+            _drillsProvider = new DatabaseDrillsProvider();
+            _drillLibrary = new DrillLibrary(_drillsProvider);
+
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-
+            var vm = new MainViewModel();
+            vm.CurrentViewModel = CreateLibraryViewModel();
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel()
+                DataContext = vm
             };
 
 
             MainWindow.Show();
-            
-
-
-            var a = new DrillsLibraryMenuViewModel();
 
             var n = 1;
         }
+
+        private DrillsListViewModel CreateDrillsListViewModel()
+        {
+            return new DrillsListViewModel(_drillLibrary);
+        }
+
+        private DrillsLibraryMenuViewModel CreateLibraryViewModel()
+        {
+            return new DrillsLibraryMenuViewModel(CreateDrillsListViewModel());
+        }
+
     }
 }

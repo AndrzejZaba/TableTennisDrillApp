@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TableTennisDrillApp.KeyWords;
+using TableTennisDrillApp.Stores;
 using TableTennisDrillApp.ViewModels.CategoriesViewModels;
 using TableTennisDrillApp.ViewModels.DrillsListViewModels;
 
@@ -15,10 +16,10 @@ namespace TableTennisDrillApp.ViewModels
         public CategoryListViewModel CategoryListVM { get; }
         public DrillsListViewModel DrillsListVM { get; }
 
-        public DrillsLibraryMenuViewModel()
+        public DrillsLibraryMenuViewModel(DrillsListViewModel drillsListViewModel)
         {
             CategoryListVM = new CategoryListViewModel();
-            DrillsListVM = new DrillsListViewModel();
+            DrillsListVM = drillsListViewModel;
         }
     }
 }
