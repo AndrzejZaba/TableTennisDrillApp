@@ -23,17 +23,20 @@ namespace TableTennisDrillApp
        // private DrillsLibraryMenuViewModel _drillsLibraryMenuViewModel;
         private readonly DrillLibrary _drillLibrary;
         private readonly IDrillsProvider _drillsProvider;
+        private ActiveDrillStore _activeDrillStore;
 
         public App()
         {
             _drillsProvider = new DatabaseDrillsProvider();
             _drillLibrary = new DrillLibrary(_drillsProvider);
+            _activeDrillStore = new ActiveDrillStore();
 
         }
         protected override void OnStartup(StartupEventArgs e)
         {
             var vm = new MainViewModel();
             vm.CurrentViewModel = CreateLibraryViewModel();
+            vm.ActiveDrillContentViewModel = _activeDrillStore.ActiveDrillViewModel;
             MainWindow = new MainWindow()
             {
                 DataContext = vm
@@ -47,7 +50,7 @@ namespace TableTennisDrillApp
 
         private DrillsListViewModel CreateDrillsListViewModel()
         {
-            return new DrillsListViewModel(_drillLibrary);
+            return new DrillsListViewModel(_drillLibrary, _activeDrillStore);
         }
 
         private DrillsLibraryMenuViewModel CreateLibraryViewModel()

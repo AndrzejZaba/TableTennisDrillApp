@@ -10,6 +10,7 @@ namespace TableTennisDrillApp.ViewModels
     public class MainViewModel : ViewModelBase
     {
         public ViewModelBase? CurrentViewModel { get; set; }
+        public ViewModelBase? ActiveDrillContentViewModel { get; set; }
 
         public MainViewModel()
         {

@@ -16,8 +16,8 @@ namespace TableTennisDrillApp.Models
         public DrillAdvancementLevel AdvancementLevel { get; }
         public List<string>? KeyWords { get; }
         public List<string>? Description { get; }
-        public List<string?> Images { get; }
-        public List<string?> Videos { get; }
+        public List<string>? Images { get; }
+        public List<string>? Videos { get; }
 
         public Drill(TimeSpan durationTime, TimeSpan breakTime, PlayersNumber numberOfPlayers, DrillAdvancementLevel advancementLevel, List<string>? keyWords, List<string>? description, List<string?> images, List<string?> videos)
         {
@@ -29,6 +29,18 @@ namespace TableTennisDrillApp.Models
             Description = description;
             Images = images;
             Videos = videos;
+        }
+
+        public Drill()
+        {
+            DurationTime = TimeSpan.Zero;
+            BreakTime = TimeSpan.Zero;
+            NumberOfPlayers = PlayersNumber.Solo;
+            AdvancementLevel = DrillAdvancementLevel.Beginner;
+            KeyWords = new List<string>();
+            Description = new List<string>();
+            Images = new List<string> {"NoDrill.jpg" };
+            Videos = new List<string>();
         }
     }
 }

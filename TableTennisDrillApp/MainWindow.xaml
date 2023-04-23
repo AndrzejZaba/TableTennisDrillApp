@@ -17,7 +17,7 @@
         <views:DrillsListMenuView Grid.Column="0" DataContext="{Binding CurrentViewModel}"/>
 
         <Border Grid.Column="1" Background="#052D40" >
-            <contentViews:DrillContentView />
+            <contentViews:DrillContentView DataContext="{Binding ActiveDrillContentViewModel}"/>
         </Border>
 
     </Grid>

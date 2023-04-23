@@ -8,8 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\Img1.jpg" />
+    <None Remove="images\NoDrill.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\Img1.jpg" />
+    <Resource Include="images\nodrill.jpg" />
   </ItemGroup>
 
 </Project>

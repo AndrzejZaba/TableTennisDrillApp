@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using TableTennisDrillApp.Commands;
 using TableTennisDrillApp.Models;
 
 namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
@@ -19,6 +21,8 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
         public string? AdvancementLevel => _drill.AdvancementLevel.ToString();
         public ObservableCollection<string>? KeyWords { get; set; }
 
+        public ICommand UpdateDrillContentCommand { get; }
+
         private bool _isSelected = false;
         public bool IsSelected
         {
@@ -30,7 +34,9 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             {
                 _isSelected = value;
                 OnPropertyChanged(nameof(IsSelected));
-                _drillsListViewModel.ActiveDrill = this.StoredDrill;
+                _drillsListViewModel.ActiveDrillStore.ActiveDrill = this.StoredDrill;
+                // Comenda (_drillsListViewModel.ActiveDrillStore)
+                
             }
         }
 
@@ -41,6 +47,8 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             _drill = drill;
             GetKewords();
             _drillsListViewModel = drillsListViewModel;
+
+            UpdateDrillContentCommand = new UpdateDrillContentCommand(_drillsListViewModel.ActiveDrillStore);
 
         }
     }

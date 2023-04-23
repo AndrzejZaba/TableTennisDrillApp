@@ -7,11 +7,12 @@ using TableTennisDrillApp.Models;
 
 namespace TableTennisDrillApp.ViewModels.DrillContentViewModels
 {
-    public class DrillContentViewModel
+    public class DrillContentViewModel : ViewModelBase
     {
         private readonly Drill _drill;
 
-        public List<string> Images => _drill.Images;
+        public List<string> Images => _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/images/", r)).ToList();
+        public string ImageOne => Images[0];
         public List<string> Description => _drill.Description;
         public TimeSpan DurationTime => _drill.DurationTime;
 
