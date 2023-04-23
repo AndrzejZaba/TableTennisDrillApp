@@ -13,7 +13,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
     {
         private readonly DrillsListViewModel _drillsListViewModel;
         private readonly Drill? _drill;
-        public Drill? SoredDrill => _drill;
+        public Drill? StoredDrill => _drill;
         public string? DrillName => _drill.NumberOfPlayers.ToString();
         public string? Image => _drill.Images?.First();
         public string? AdvancementLevel => _drill.AdvancementLevel.ToString();
@@ -30,7 +30,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             {
                 _isSelected = value;
                 OnPropertyChanged(nameof(IsSelected));
-                _drillsListViewModel.ActiveDrill = this.SoredDrill;
+                _drillsListViewModel.ActiveDrill = this.StoredDrill;
             }
         }
 

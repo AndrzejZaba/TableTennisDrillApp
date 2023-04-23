@@ -17,9 +17,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
         private readonly DrillLibrary _drillLibrary;
 
         public IEnumerable<DrillsListItemViewModel>? Drills => _drills;
-        public Drill? ActiveDrill { 
-            get; 
-            set; }
+        public Drill? ActiveDrill { get; set; }
         public DrillsListViewModel(DrillLibrary drillLibrary)
         {
             _drills = new ObservableCollection<DrillsListItemViewModel>();
