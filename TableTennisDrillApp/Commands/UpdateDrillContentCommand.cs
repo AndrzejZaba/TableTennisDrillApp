@@ -15,7 +15,7 @@ namespace TableTennisDrillApp.Commands
 
         public UpdateDrillContentCommand(ActiveDrillStore activeDrillStore)
         {
-            ActiveDrillStore = activeDrillStore;
+            _activeDrillStore = activeDrillStore;
         }
 
         public override void  Execute(object? parameter)

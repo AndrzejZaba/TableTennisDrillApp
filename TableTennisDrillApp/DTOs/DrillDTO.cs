@@ -11,6 +11,7 @@ namespace TableTennisDrillApp.DTOs
     {
         [Key]
         public int Id { get; set; }
+        public string? Name { get; set; }
         public TimeSpan DurationTime { get; set; }
         public TimeSpan BreakTime { get; set; }
         public int PlayersNumber { get; set; }

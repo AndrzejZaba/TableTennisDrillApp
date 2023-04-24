@@ -9,8 +9,27 @@ namespace TableTennisDrillApp.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public ViewModelBase? CurrentViewModel { get; set; }
-        public ViewModelBase? ActiveDrillContentViewModel { get; set; }
+        private ActiveDrillStore _activeDrillStore;
+        public ActiveDrillStore ActiveDrillStore
+        {
+            get { return _activeDrillStore; }
+            set 
+            { 
+                _activeDrillStore = value;
+                OnPropertyChanged(nameof(ActiveDrillStore));
+                ActiveDrillContentViewModel = ActiveDrillStore.ActiveDrillViewModel;
+            }
+        }
+        public ViewModelBase? CurrentViewModel 
+        { 
+            get; 
+            set; 
+        }
+        public ViewModelBase? ActiveDrillContentViewModel 
+        { 
+            get; 
+            set; 
+        }
 
         public MainViewModel()
         {

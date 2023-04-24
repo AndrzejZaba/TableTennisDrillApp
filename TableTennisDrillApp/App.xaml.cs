@@ -36,7 +36,15 @@ namespace TableTennisDrillApp
         {
             var vm = new MainViewModel();
             vm.CurrentViewModel = CreateLibraryViewModel();
-            vm.ActiveDrillContentViewModel = _activeDrillStore.ActiveDrillViewModel;
+            
+            
+            vm.ActiveDrillStore = _activeDrillStore;
+
+            //vm.ActiveDrillContentViewModel = _activeDrillStore.ActiveDrillViewModel;
+            
+            
+            // Try to implemetn event taht will be fired when _activeDrillStore.ActiveDrillViewModel is changed. Then MainViewModel will be updated.
+            // Because now MainViewModel work as it's ActiveDrillContentViewModel doesn't refere to _activeDrillStore.ActiveDrillViewModel
             MainWindow = new MainWindow()
             {
                 DataContext = vm
@@ -45,7 +53,6 @@ namespace TableTennisDrillApp
 
             MainWindow.Show();
 
-            var n = 1;
         }
 
         private DrillsListViewModel CreateDrillsListViewModel()

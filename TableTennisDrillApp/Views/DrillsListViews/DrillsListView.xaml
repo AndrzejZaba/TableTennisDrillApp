@@ -36,6 +36,7 @@
                     <RadioButton 
                         IsChecked="{Binding IsSelected}" 
                         Style="{StaticResource DrillListItemRadioButton}"
+                        Command="{Binding UpdateDrillContentCommand}"
                         GroupName="Drills">
                         
                         

@@ -37,6 +37,7 @@ namespace TableTennisDrillApp.Services.DrillsProviders
         private static Drill ToDrill(DrillDTO drillDTO)
         {
             return new Drill(
+                drillDTO.Name,
                 drillDTO.DurationTime,
                 drillDTO.BreakTime,
                 (PlayersNumber)drillDTO.PlayersNumber,

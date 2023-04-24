@@ -10,6 +10,7 @@ namespace TableTennisDrillApp.Models
 {
     public class Drill
     {
+        public string Name { get; }
         public TimeSpan DurationTime { get; }
         public TimeSpan BreakTime { get; }
         public PlayersNumber NumberOfPlayers { get; }
@@ -19,8 +20,9 @@ namespace TableTennisDrillApp.Models
         public List<string>? Images { get; }
         public List<string>? Videos { get; }
 
-        public Drill(TimeSpan durationTime, TimeSpan breakTime, PlayersNumber numberOfPlayers, DrillAdvancementLevel advancementLevel, List<string>? keyWords, List<string>? description, List<string?> images, List<string?> videos)
+        public Drill(string name, TimeSpan durationTime, TimeSpan breakTime, PlayersNumber numberOfPlayers, DrillAdvancementLevel advancementLevel, List<string>? keyWords, List<string>? description, List<string?> images, List<string?> videos)
         {
+            Name = name;
             DurationTime = durationTime;
             BreakTime = breakTime;
             NumberOfPlayers = numberOfPlayers;
@@ -33,6 +35,7 @@ namespace TableTennisDrillApp.Models
 
         public Drill()
         {
+            Name = "NoDrill";
             DurationTime = TimeSpan.Zero;
             BreakTime = TimeSpan.Zero;
             NumberOfPlayers = PlayersNumber.Solo;
