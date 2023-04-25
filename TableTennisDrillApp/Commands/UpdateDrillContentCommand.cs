@@ -20,7 +20,8 @@ namespace TableTennisDrillApp.Commands
 
         public override void  Execute(object? parameter)
         {
-            ActiveDrillStore.ActiveDrillViewModel = new DrillContentViewModel(ActiveDrillStore.ActiveDrill);
+            _activeDrillStore.ActiveDrillViewModel = new DrillContentViewModel(ActiveDrillStore.ActiveDrill);
+            //ActiveDrillStore.ActiveDrillViewModel = new DrillContentViewModel(ActiveDrillStore.ActiveDrill);
         }
 
 

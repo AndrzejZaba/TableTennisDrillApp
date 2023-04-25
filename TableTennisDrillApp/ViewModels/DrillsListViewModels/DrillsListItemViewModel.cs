@@ -17,7 +17,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
         private readonly Drill? _drill;
         public Drill? StoredDrill => _drill;
         public string? DrillName => _drill.Name;
-        public string? FirstImage => string.Concat(@"/TableTennisDrillApp;component/images/", _drill.Images[0]);
+        public string? FirstImage => _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/images/", r)).First();
         public string? AdvancementLevel => _drill.AdvancementLevel.ToString();
         public ObservableCollection<string>? KeyWords { get; set; }
 

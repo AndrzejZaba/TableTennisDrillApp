@@ -13,6 +13,7 @@ namespace TableTennisDrillApp.Stores
     {
         private Drill? _activeDrill ;
         private ViewModelBase _activeDrillViewModel;
+
         public Drill ActiveDrill
         {
             get { return _activeDrill; }
@@ -22,7 +23,11 @@ namespace TableTennisDrillApp.Stores
         public ViewModelBase ActiveDrillViewModel
         {
             get => _activeDrillViewModel;
-            set => _activeDrillViewModel = value;
+            set
+            {
+                _activeDrillViewModel = value;
+                OnActiveDrillViewModelChanged();
+            }
         }
         public ActiveDrillStore()
         {
@@ -34,6 +39,13 @@ namespace TableTennisDrillApp.Stores
         {
             _activeDrill = activeDrill;
             _activeDrillViewModel = new DrillContentViewModel(_activeDrill);
+        }
+
+        public event Action ActiveDrillViewModelChanged;
+
+        private void OnActiveDrillViewModelChanged()
+        {
+            ActiveDrillViewModelChanged?.Invoke();
         }
     }
 }

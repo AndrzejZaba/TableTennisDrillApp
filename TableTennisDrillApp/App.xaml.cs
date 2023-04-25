@@ -34,11 +34,11 @@ namespace TableTennisDrillApp
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            var vm = new MainViewModel();
+            var vm = new MainViewModel(_activeDrillStore);
             vm.CurrentViewModel = CreateLibraryViewModel();
             
             
-            vm.ActiveDrillStore = _activeDrillStore;
+            //vm.ActiveDrillStore = _activeDrillStore;
 
             //vm.ActiveDrillContentViewModel = _activeDrillStore.ActiveDrillViewModel;
             
