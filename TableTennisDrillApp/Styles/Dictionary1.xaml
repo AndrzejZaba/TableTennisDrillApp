@@ -30,7 +30,7 @@
                                             Grid.Column="1" 
                                             Text="{Binding DrillName}"  
                                             TextWrapping="Wrap"
-                                            FontSize="28"
+                                            FontSize="18"
                                             FontWeight="Medium"
                                             Foreground="White"/>
 

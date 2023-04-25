@@ -11,11 +11,7 @@ namespace TableTennisDrillApp.ViewModels
     {
         private ActiveDrillStore _activeDrillStore;
 
-        public ViewModelBase? CurrentViewModel 
-        { 
-            get; 
-            set; 
-        }
+        public ViewModelBase? CurrentViewModel { get; set; }
         public ViewModelBase ActiveDrillContentViewModel => _activeDrillStore.ActiveDrillViewModel;
 
         public MainViewModel(ActiveDrillStore activeDrillStore)
@@ -23,7 +19,6 @@ namespace TableTennisDrillApp.ViewModels
             _activeDrillStore = activeDrillStore;
 
             _activeDrillStore.ActiveDrillViewModelChanged += OnCurrentDrillViewModelChanged;
-            //CurrentViewModel = new DrillsLibraryMenuViewModel();
         }
 
         private void OnCurrentDrillViewModelChanged()

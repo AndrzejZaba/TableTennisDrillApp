@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\Img1.jpg" />
-    <None Remove="images\Img2.jpg" />
-    <None Remove="images\Img3.jpg" />
-    <None Remove="images\NoDrill.jpg" />
+    <None Remove="Images\Img1.jpg" />
+    <None Remove="Images\Img2.jpg" />
+    <None Remove="Images\Img3.jpg" />
+    <None Remove="Images\NoDrill.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,10 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\Img1.jpg" />
-    <Resource Include="images\Img2.jpg" />
-    <Resource Include="images\Img3.jpg" />
-    <Resource Include="images\nodrill.jpg" />
+    <Resource Include="Images\Img1.jpg" />
+    <Resource Include="Images\Img2.jpg" />
+    <Resource Include="Images\Img3.jpg" />
+    <Resource Include="Images\nodrill.jpg" />
   </ItemGroup>
 
 </Project>

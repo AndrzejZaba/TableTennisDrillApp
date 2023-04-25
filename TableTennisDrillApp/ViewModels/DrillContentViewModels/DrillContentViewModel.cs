@@ -11,7 +11,7 @@ namespace TableTennisDrillApp.ViewModels.DrillContentViewModels
     {
         private readonly Drill _drill;
 
-        public List<string> Images => _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/images/", r)).ToList();
+        public List<string> Images => _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).ToList();
         public string ImageOne => Images[0];
         public List<string> Description => _drill.Description;
         public TimeSpan DurationTime => _drill.DurationTime;
