@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using TableTennisDrillApp.Commands;
 
 namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
 {
     public class CategoryListItemViewModel : ViewModelBase
     {
-        private CategoryListViewModel listViewModel;
+        private CategoryListViewModel _listViewModel;
         private string? _categoryName;
         public string? CategoryName
         {
@@ -37,19 +39,21 @@ namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
 
                 if(_isChecked == true)
                 {
-                    listViewModel.SelectedCategories.Add(this);
+                    _listViewModel.SelectedCategories.Add(this.CategoryName);
                 }
                 else
                 {
-                    listViewModel.SelectedCategories.Remove(this);
+                    _listViewModel.SelectedCategories.Remove(this.CategoryName);
                 }
             }
         }
 
+        public ICommand UpdateSelectedCategoriesCommand { get; }
         public CategoryListItemViewModel(string categoryName, CategoryListViewModel listViewModel)
         {
             CategoryName = categoryName;
-            this.listViewModel = listViewModel;
+            _listViewModel = listViewModel;
+            UpdateSelectedCategoriesCommand = new UpdateSelectedCategoriesCommand(_listViewModel);
         }
     }
 }

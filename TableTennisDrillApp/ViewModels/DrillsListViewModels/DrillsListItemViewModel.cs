@@ -17,7 +17,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
         private readonly Drill? _drill;
         public Drill? StoredDrill => _drill;
         public string? DrillName => _drill.Name;
-        public string? FirstImage => _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).First();
+        public string? FirstImage { get; set; }
         public string? AdvancementLevel => _drill.AdvancementLevel.ToString();
         public ObservableCollection<string>? KeyWords { get; set; }
 
@@ -48,6 +48,15 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             _drill = drill;
             GetKewords();
             _drillsListViewModel = drillsListViewModel;
+
+            try
+            {
+                FirstImage = _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).First();
+
+            }catch 
+            {
+                FirstImage = @"/TableTennisDrillApp;component/Images/nodrill.jpg";
+            }
 
             UpdateDrillContentCommand = new UpdateDrillContentCommand(_drillsListViewModel.ActiveDrillStore);
 

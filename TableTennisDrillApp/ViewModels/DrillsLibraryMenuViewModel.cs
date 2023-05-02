@@ -18,8 +18,8 @@ namespace TableTennisDrillApp.ViewModels
 
         public DrillsLibraryMenuViewModel(DrillsListViewModel drillsListViewModel)
         {
-            CategoryListVM = new CategoryListViewModel();
             DrillsListVM = drillsListViewModel;
+            CategoryListVM = new CategoryListViewModel(DrillsListVM);
         }
     }
 }

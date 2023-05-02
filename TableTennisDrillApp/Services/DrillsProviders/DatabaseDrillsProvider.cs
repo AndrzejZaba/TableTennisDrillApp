@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TableTennisDrillApp.DTOs;
 using TableTennisDrillApp.Enums;
 using TableTennisDrillApp.Models;
@@ -18,7 +19,7 @@ namespace TableTennisDrillApp.Services.DrillsProviders
         /// Get all drills from database
         /// </summary>
         /// <returns>IEnumerable of Drill model objects</returns>
-        public async Task<IEnumerable<Drill>> GetAllDrills()
+        public async Task<IEnumerable<Drill>> GetAllDrillsAsync()
         {
             var connectionString = "Server=DESKTOP-B6CMF7A\\SQLEXPRESS;Database=TableTennisDrills;Trusted_Connection=True;encrypt=False;";
             var sqlQuery = "SELECT * FROM [TableTennisDrills].[dbo].[Drills]";
@@ -26,6 +27,37 @@ namespace TableTennisDrillApp.Services.DrillsProviders
             {
                 var drillsDTOs = await connection.QueryAsync<DrillDTO>(sqlQuery);
                 return drillsDTOs.Select(r => ToDrill(r)).ToList();
+            }
+        }
+
+        /// <summary>
+        /// Get drills containing selected KeyWords from database
+        /// </summary>
+        /// <returns>IEnumerable of Drill model objects</returns>
+        public async Task<IEnumerable<Drill>> GetSelectedDrillsAsync(IEnumerable<string> selectedCategories)
+        {
+            var connectionString = "Server=DESKTOP-B6CMF7A\\SQLEXPRESS;Database=TableTennisDrills;Trusted_Connection=True;encrypt=False;";
+
+            var sqlQuery = "SELECT * FROM [TableTennisDrills].[dbo].[Drills]";
+            try
+            {
+                foreach (var category in selectedCategories)
+                {
+                    if (sqlQuery[-1].Equals(']')) sqlQuery += $"WHERE KeyWords LIKE '{category}'";
+                    else sqlQuery += $"AND KeyWords LIKE '{category}'";
+                }
+
+
+                using (IDbConnection connection = new SqlConnection(connectionString))
+                {
+                    var drillsDTOs = await connection.QueryAsync<DrillDTO>(sqlQuery);
+                    return drillsDTOs.Select(r => ToDrill(r)).ToList();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Cannot get the records", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return await GetAllDrillsAsync();
             }
         }
 

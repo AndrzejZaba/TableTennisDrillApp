@@ -19,6 +19,7 @@
                     <DataTemplate>
                             <ToggleButton Content="{Binding Path=CategoryName}"
                                           IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                                          Command="{Binding}"
                                           Foreground="White" 
                                           Background="#2596be"
                                           FontSize="14"

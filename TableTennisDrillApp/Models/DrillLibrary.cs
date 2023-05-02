@@ -12,9 +12,20 @@ namespace TableTennisDrillApp.Models
         // IDrillsProvider 
         private readonly IDrillsProvider _drillsProvider;
 
-        private readonly IEnumerable<Drill> _drills;
+        private IEnumerable<Drill> _drills;
 
-        public IEnumerable<Drill> Drills => _drills;
+        public IEnumerable<Drill> Drills
+        {
+            get
+            {
+                return _drills;
+            }
+            set
+            {
+                _drills = value;
+            }
+        }
+        
         public DrillLibrary(IDrillsProvider drillsProvider)
         {
             _drillsProvider = drillsProvider;         
@@ -26,11 +37,14 @@ namespace TableTennisDrillApp.Models
         // Task GetAllDrills
         public async Task<IEnumerable<Drill>> GetAllDrills()
         {
-            return await _drillsProvider.GetAllDrills();
+            return await _drillsProvider.GetAllDrillsAsync();
         }
 
 
         // GetSelectedDrills -> być może 
-
+        public async Task<IEnumerable<Drill>> GetSelectedDrillsAsync(IEnumerable<string> selectedCategories)
+        {
+            return await _drillsProvider.GetSelectedDrillsAsync(selectedCategories);
+        }
     }
 }

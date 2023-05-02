@@ -13,7 +13,7 @@ namespace TableTennisDrillApp.ViewModels.DrillContentViewModels
     {
         private readonly Drill _drill;
 
-        public List<string> Images => _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).ToList();
+        public List<string> Images { get; set; }
         public string ImageOne => Images[0];
         public ICollection<DescriptionLine> DrillDescription { get; set; }
         public TimeSpan DurationTime => _drill.DurationTime;
@@ -21,6 +21,17 @@ namespace TableTennisDrillApp.ViewModels.DrillContentViewModels
         public DrillContentViewModel(Drill drill)
         {
             _drill = drill;
+            try
+            {
+                Images = _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).ToList();
+
+            }
+            catch
+            {
+                Images = new List<string> { @"/TableTennisDrillApp;component/Images/nodrill.jpg" };
+            }
+
+
             DrillDescription = new ObservableCollection<DescriptionLine>();
             foreach (var line in _drill.Description)
             {

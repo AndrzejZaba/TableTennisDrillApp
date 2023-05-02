@@ -9,6 +9,7 @@ namespace TableTennisDrillApp.Services.DrillsProviders
 {
     public interface IDrillsProvider
     {
-        Task<IEnumerable<Drill>> GetAllDrills();
+        Task<IEnumerable<Drill>> GetAllDrillsAsync();
+        Task<IEnumerable<Drill>> GetSelectedDrillsAsync(IEnumerable<string> selectedCategories);
     }
 }

@@ -13,12 +13,30 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
     public class DrillsListViewModel : ViewModelBase
     {
 
-        private readonly ObservableCollection<DrillsListItemViewModel>? _drills;
+        private ObservableCollection<DrillsListItemViewModel>? _drills;
         private readonly DrillLibrary _drillLibrary;
         private ActiveDrillStore _activeDrillStore;
 
-        public IEnumerable<DrillsListItemViewModel>? Drills => _drills;
-        //public Drill? ActiveDrill { get; set; }
+        public ObservableCollection<DrillsListItemViewModel>? Drills
+        {
+            get
+            {
+                return _drills;
+            }
+            set
+            {
+                OnPropertyChanged(nameof(Drills));
+                _drills = value;    
+            }
+        }
+        
+        public DrillLibrary DrillLibrary 
+        { 
+            get 
+            { 
+                return _drillLibrary; 
+            } 
+        }
         public ActiveDrillStore ActiveDrillStore 
         { 
             get
@@ -36,13 +54,17 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             _activeDrillStore = activeDrillStore;
             _drillLibrary = drillLibrary;
 
-            //ActiveDrill = null;
 
+            RefreshDrills();
+            
+        }
+
+        public void RefreshDrills()
+        {
             foreach (Drill drill in _drillLibrary.Drills)
             {
                 _drills?.Add(new DrillsListItemViewModel(drill, this));
             }
-            
         }
     }
 }

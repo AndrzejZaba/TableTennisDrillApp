@@ -5,21 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TableTennisDrillApp.KeyWords;
+using TableTennisDrillApp.ViewModels.DrillsListViewModels;
 
 namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
 {
     public class CategoryListViewModel : ViewModelBase
     {
         private readonly ObservableCollection<CategoryListItemViewModel> _categories;
-        private readonly ObservableCollection<CategoryListItemViewModel> _selectedCategories;
+        private readonly List<string> _selectedCategories;
         public IEnumerable<CategoryListItemViewModel> Categories => _categories;
-        public ICollection<CategoryListItemViewModel> SelectedCategories => _selectedCategories;
-
+        public List<string> SelectedCategories => _selectedCategories;
         public List<string> KeyWords { get; set; }
-        public CategoryListViewModel()
+        public DrillsListViewModel DrillsListVM { get; set; }
+        public CategoryListViewModel(DrillsListViewModel drillsListVM)
         {
+            DrillsListVM = drillsListVM;
             _categories = new ObservableCollection<CategoryListItemViewModel>();
-            _selectedCategories = new ObservableCollection<CategoryListItemViewModel>();
+            _selectedCategories = new List<string>();
+            KeyWords = new List<string>();
             GetListOfKeywords();
             PrepareCategories();
         }
@@ -29,7 +32,6 @@ namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
         /// </summary>
         public void GetListOfKeywords()
         {
-            KeyWords = new List<string>();
             var list = typeof(KeyWord).GetFields().Select(x => x.GetValue(typeof(KeyWord))).ToList();
 
             foreach (var item in list)

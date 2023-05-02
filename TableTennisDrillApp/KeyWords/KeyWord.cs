@@ -22,5 +22,6 @@ namespace TableTennisDrillApp.KeyWords
         public static readonly string Footwork = "Footwork";
         public static readonly string Dropshot = "Dropshot";
         public static readonly string WarmUp = "Warm-up";
+        public static readonly string ReverseSpin = "Reverse Spin";
     }
 }
