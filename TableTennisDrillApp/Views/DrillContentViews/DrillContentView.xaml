@@ -3,9 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vmd="clr-namespace:TableTennisDrillApp.ViewModels.DrillContentViewModels" 
              xmlns:local="clr-namespace:TableTennisDrillApp.Views.DrillContentViews"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1250">
+
+    <!--<d:UserControl.DataContext>
+        <vmd:DrillContentViewModel/>
+    </d:UserControl.DataContext>-->
+
     <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="500"/>
@@ -21,7 +27,20 @@
         </Border>
 
         <Border Grid.Row="0" Grid.Column="1" BorderBrush="White" BorderThickness="2" CornerRadius="30" Margin="20">
-            
+            <ItemsControl ItemsSource="{Binding DrillDescription}" Margin="50">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0 0 0 20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding PlayerIcon}" Grid.Column="0" Width="32" Height="32" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 0 0"/>
+                            <TextBlock Text="{Binding Description}" Grid.Column="1" FontSize="28" Foreground="White" Margin=" 10 0 0 0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Border>
 
     </Grid>

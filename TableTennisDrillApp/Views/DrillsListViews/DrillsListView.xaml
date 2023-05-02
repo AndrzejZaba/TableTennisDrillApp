@@ -11,23 +11,6 @@
     <!--<d:UserControl.DataContext>
         <vmd:DrillsListViewModel/>
     </d:UserControl.DataContext>-->
-    <UserControl.Resources>
-        <Style x:Key="Item" TargetType="RadioButton">
-            <Style.Triggers>
-                <Trigger Property="IsChecked" Value="true">
-                    <Trigger.Setters>
-                        <Setter Property="Background" Value="Beige"/>
-                    </Trigger.Setters>
-                </Trigger>
-                <Trigger Property="IsChecked" Value="false">
-                    <Trigger.Setters>
-                        <Setter Property="BorderBrush" Value="Black"/>
-                    </Trigger.Setters>
-                </Trigger>
-            </Style.Triggers>
-            
-        </Style>
-    </UserControl.Resources>
     
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <ItemsControl ItemsSource="{Binding Drills}" HorizontalAlignment="Center" >
@@ -43,10 +26,6 @@
                     </RadioButton>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-            
-            
-        
-        
 
         </ItemsControl>
     </ScrollViewer>

@@ -8,10 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\A_Player.png" />
+    <None Remove="Icons\A_PlayerM.png" />
+    <None Remove="Icons\B_Player.png" />
+    <None Remove="Icons\B_PlayerM.png" />
     <None Remove="Images\Img1.jpg" />
     <None Remove="Images\Img2.jpg" />
     <None Remove="Images\Img3.jpg" />
     <None Remove="Images\NoDrill.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\A_Player.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Icons\A_PlayerM.png" />
+    <Resource Include="Icons\B_Player.png" />
+    <Resource Include="Icons\B_PlayerM.png" />
     <Resource Include="Images\Img1.jpg" />
     <Resource Include="Images\Img2.jpg" />
     <Resource Include="Images\Img3.jpg" />
