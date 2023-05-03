@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,9 +52,16 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
 
             try
             {
-                FirstImage = _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).First();
-
-            }catch 
+                if (File.Exists(@"C:\My_Projects\C#\TableTennisTraining\TableTennisDrillApp\TableTennisDrillApp\Images\" + _drill.Images.First()))
+                {
+                    FirstImage = _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).First();
+                }
+                else
+                {
+                    FirstImage = @"/TableTennisDrillApp;component/Images/nodrill.jpg";
+                }
+            }
+            catch 
             {
                 FirstImage = @"/TableTennisDrillApp;component/Images/nodrill.jpg";
             }

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Shapes;
 using TableTennisDrillApp.Models;
 
@@ -14,17 +16,28 @@ namespace TableTennisDrillApp.ViewModels.DrillContentViewModels
         private readonly Drill _drill;
 
         public List<string> Images { get; set; }
-        public string ImageOne => Images[0];
+        public string ImageOne { get; set; }
         public ICollection<DescriptionLine> DrillDescription { get; set; }
         public TimeSpan DurationTime => _drill.DurationTime;
 
         public DrillContentViewModel(Drill drill)
         {
             _drill = drill;
+
+            // TODO: Improve this code
             try
             {
-                Images = _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).ToList();
-
+                Images = drill.Images.ToList();
+                if (File.Exists(@"C:\My_Projects\C#\TableTennisTraining\TableTennisDrillApp\TableTennisDrillApp\Images\" + Images.First()))
+                {
+                    Images = _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).ToList();
+                
+                    ImageOne = Images.First();
+                } 
+                else
+                {
+                    ImageOne = @"/TableTennisDrillApp;component/Images/nodrill.jpg";
+                }
             }
             catch
             {
