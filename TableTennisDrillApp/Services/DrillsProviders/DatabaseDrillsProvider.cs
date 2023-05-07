@@ -19,7 +19,7 @@ namespace TableTennisDrillApp.Services.DrillsProviders
         /// Get all drills from database
         /// </summary>
         /// <returns>IEnumerable of Drill model objects</returns>
-        public async Task<IEnumerable<Drill>> GetAllDrillsAsync()
+        public async Task<List<Drill>> GetAllDrillsAsync()
         {
             var connectionString = "Server=DESKTOP-B6CMF7A\\SQLEXPRESS;Database=TableTennisDrills;Trusted_Connection=True;encrypt=False;";
             var sqlQuery = "SELECT * FROM [TableTennisDrills].[dbo].[Drills]";
@@ -34,7 +34,7 @@ namespace TableTennisDrillApp.Services.DrillsProviders
         /// Get drills containing selected KeyWords from database
         /// </summary>
         /// <returns>IEnumerable of Drill model objects</returns>
-        public async Task<IEnumerable<Drill>> GetSelectedDrillsAsync(IEnumerable<string> selectedCategories)
+        public async Task<List<Drill>> GetSelectedDrillsAsync(List<string> selectedCategories)
         {
             var connectionString = "Server=DESKTOP-B6CMF7A\\SQLEXPRESS;Database=TableTennisDrills;Trusted_Connection=True;encrypt=False;";
 
@@ -43,8 +43,8 @@ namespace TableTennisDrillApp.Services.DrillsProviders
             {
                 foreach (var category in selectedCategories)
                 {
-                    if (sqlQuery[-1].Equals(']')) sqlQuery += $"WHERE KeyWords LIKE '{category}'";
-                    else sqlQuery += $"AND KeyWords LIKE '{category}'";
+                    if (sqlQuery.Last().Equals(']')) sqlQuery += $" WHERE KeyWords LIKE '%{category}%'";
+                    else sqlQuery += $" AND KeyWords LIKE '%{category}%'";
                 }
 
 

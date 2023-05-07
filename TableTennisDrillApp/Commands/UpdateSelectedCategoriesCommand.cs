@@ -7,7 +7,7 @@ using TableTennisDrillApp.ViewModels.CategoriesViewModels;
 
 namespace TableTennisDrillApp.Commands
 {
-    public class UpdateSelectedCategoriesCommand : CommandBase
+    public class UpdateSelectedCategoriesCommand : AsyncCommandBase
     {
         private readonly CategoryListViewModel _categoryListViewModel;
 
@@ -15,9 +15,13 @@ namespace TableTennisDrillApp.Commands
         {
             _categoryListViewModel = categoryListViewModel;
         }
-        public override void Execute(object? parameter)
+        
+
+        public override async Task ExecuteAsync(object? parameter)
         {
-            _categoryListViewModel.DrillsListVM.DrillLibrary.Drills = (IEnumerable<Models.Drill>)_categoryListViewModel.DrillsListVM.DrillLibrary.GetSelectedDrillsAsync(
+            _categoryListViewModel.DrillsListVM.DrillLibrary.Drills.Clear();
+
+             _categoryListViewModel.DrillsListVM.DrillLibrary.Drills = await _categoryListViewModel.DrillsListVM.DrillLibrary.GetSelectedDrillsAsync(
                 _categoryListViewModel.SelectedCategories);
 
             _categoryListViewModel.DrillsListVM.RefreshDrills();

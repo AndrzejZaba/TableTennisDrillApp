@@ -50,6 +50,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             GetKewords();
             _drillsListViewModel = drillsListViewModel;
 
+            // TODO: Try to improve this code
             try
             {
                 if (File.Exists(@"C:\My_Projects\C#\TableTennisTraining\TableTennisDrillApp\TableTennisDrillApp\Images\" + _drill.Images.First()))

@@ -14,15 +14,15 @@
 
     <Grid Margin="25">
         <Grid.RowDefinitions>
-            <RowDefinition Height="500"/>
+            <RowDefinition Height="500" />
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="454"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="0" Grid.Column="0" BorderBrush="White" BorderThickness="2" CornerRadius="30" Margin="20">
+        <Border Grid.Row="0" Grid.Column="0" BorderBrush="White" BorderThickness="2" Margin="20">
             <Image Source="{Binding ImageOne}"/>
         </Border>
 
