@@ -8,8 +8,8 @@ namespace TableTennisDrillApp.KeyWords
 {
     public static class KeyWord
     {
-        public static readonly string Forehand = "Forehand";
-        public static readonly string Backchand = "Backhand";
+        public static readonly string Forehand = "FH";
+        public static readonly string Backchand = "BH";
         public static readonly string Drive = "Drive";
         public static readonly string Push = "Push";
         public static readonly string Serve = "Serve";

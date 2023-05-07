@@ -59,17 +59,6 @@ namespace TableTennisDrillApp.ViewModels.DrillContentViewModels
 
             }
         }
-
-        public DrillContentViewModel()
-        {
-            DrillDescription = new ObservableCollection<DescriptionLine>
-            {
-                new DescriptionLine("Test1", @"/TableTennisDrillApp;component/Icons/A_PlayerM.png"),
-                new DescriptionLine("Test2", @"/TableTennisDrillApp;component/Icons/A_PlayerM.png"),
-                new DescriptionLine("Test3", @"/TableTennisDrillApp;component/Icons/A_PlayerM.png")
-            };
-        }
-
     }
 
     public class DescriptionLine

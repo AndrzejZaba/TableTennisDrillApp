@@ -33,7 +33,7 @@ namespace TableTennisDrillApp.Services.DrillsProviders
         /// <summary>
         /// Get drills containing selected KeyWords from database
         /// </summary>
-        /// <returns>IEnumerable of Drill model objects</returns>
+        /// <returns>List of Drill model objects</returns>
         public async Task<List<Drill>> GetSelectedDrillsAsync(List<string> selectedCategories)
         {
             var connectionString = "Server=DESKTOP-B6CMF7A\\SQLEXPRESS;Database=TableTennisDrills;Trusted_Connection=True;encrypt=False;";

@@ -34,7 +34,10 @@ namespace TableTennisDrillApp.Models
             _drills = GetAllDrills().Result;
         }
 
-        // Task GetAllDrills
+        /// <summary>
+        /// Asynchronously provides all drills saved in database 
+        /// </summary>
+        /// <returns>List of Drill models</returns>
         public async Task<List<Drill>> GetAllDrills()
         {
             return await _drillsProvider.GetAllDrillsAsync();
@@ -42,6 +45,11 @@ namespace TableTennisDrillApp.Models
 
 
         // GetSelectedDrills -> być może 
+        /// <summary>
+        /// Asynchronously provides drills saved in database which keywords match selected categories 
+        /// </summary>
+        /// <param name="selectedCategories">List of selected categories</param>
+        /// <returns>List of Drill models with matching keywords</returns>
         public async Task<List<Drill>> GetSelectedDrillsAsync(List<string> selectedCategories)
         {
             return await Task.Run(() => _drillsProvider.GetSelectedDrillsAsync(selectedCategories));
