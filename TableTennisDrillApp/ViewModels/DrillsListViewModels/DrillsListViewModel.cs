@@ -15,7 +15,6 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
 
         private ObservableCollection<DrillsListItemViewModel>? _drills;
         private DrillLibrary _drillLibrary;
-        private ActiveDrillStore _activeDrillStore;
 
         public ObservableCollection<DrillsListItemViewModel>? Drills
         {
@@ -42,23 +41,11 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
                 _drillLibrary = value;
             }
         }
-        public ActiveDrillStore ActiveDrillStore 
-        { 
-            get
-            {
-                return _activeDrillStore;
-            }
-            set
-            {
-                _activeDrillStore = value;
-            }
-        }
-        public DrillsListViewModel(DrillLibrary drillLibrary, ActiveDrillStore activeDrillStore)
+
+        public DrillsListViewModel(DrillLibrary drillLibrary)
         {
             _drills = new ObservableCollection<DrillsListItemViewModel>();
-            _activeDrillStore = activeDrillStore;
             _drillLibrary = drillLibrary;
-
 
             RefreshDrills();
             

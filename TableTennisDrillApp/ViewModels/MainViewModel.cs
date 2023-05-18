@@ -9,16 +9,12 @@ namespace TableTennisDrillApp.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private ActiveDrillStore _activeDrillStore;
-
         public ViewModelBase? CurrentViewModel { get; set; }
-        public ViewModelBase ActiveDrillContentViewModel => _activeDrillStore.ActiveDrillViewModel;
+        public ViewModelBase ActiveDrillContentViewModel => ActiveDrillStore.GetStore().ActiveDrillViewModel;
 
-        public MainViewModel(ActiveDrillStore activeDrillStore)
+        public MainViewModel()
         {
-            _activeDrillStore = activeDrillStore;
-
-            _activeDrillStore.ActiveDrillViewModelChanged += OnCurrentDrillViewModelChanged;
+            ActiveDrillStore.GetStore().ActiveDrillChanged += OnCurrentDrillViewModelChanged;
         }
 
         private void OnCurrentDrillViewModelChanged()

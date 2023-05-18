@@ -43,8 +43,6 @@ namespace TableTennisDrillApp.Models
             return await _drillsProvider.GetAllDrillsAsync();
         }
 
-
-        // GetSelectedDrills -> być może 
         /// <summary>
         /// Asynchronously provides drills saved in database which keywords match selected categories 
         /// </summary>

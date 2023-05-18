@@ -11,13 +11,23 @@ namespace TableTennisDrillApp.Stores
 {
     public class ActiveDrillStore
     {
+        private static ActiveDrillStore _instance = null;
+        private static object _instanceLock = new object();
+
         private Drill? _activeDrill ;
         private ViewModelBase _activeDrillViewModel;
 
         public Drill ActiveDrill
         {
-            get { return _activeDrill; }
-            set { _activeDrill = value; }
+            get 
+            { 
+                return _activeDrill; 
+            }
+            set 
+            { 
+                _activeDrill = value; 
+                OnActiveDrillChanged();
+            }
         }
 
         public ViewModelBase ActiveDrillViewModel
@@ -26,26 +36,37 @@ namespace TableTennisDrillApp.Stores
             set
             {
                 _activeDrillViewModel = value;
-                OnActiveDrillViewModelChanged();
             }
         }
-        public ActiveDrillStore()
+        private ActiveDrillStore()
         {
             _activeDrill = new Drill();
             _activeDrillViewModel = new DrillContentViewModel(_activeDrill);
+            ActiveDrillChanged += UpdateDrillStore;
         }
 
-        public ActiveDrillStore(Drill activeDrill)
+        public static ActiveDrillStore GetStore()
         {
-            _activeDrill = activeDrill;
-            _activeDrillViewModel = new DrillContentViewModel(_activeDrill);
+            lock (_instanceLock)
+            {
+                if (_instance == null)
+                {
+                    _instance = new ActiveDrillStore();
+                }
+            }
+            return _instance;
         }
 
-        public event Action ActiveDrillViewModelChanged;
+        public event Action? ActiveDrillChanged;
 
-        private void OnActiveDrillViewModelChanged()
+        private void OnActiveDrillChanged()
         {
-            ActiveDrillViewModelChanged?.Invoke();
+            ActiveDrillChanged?.Invoke();
+        }
+
+        public void UpdateDrillStore()
+        {
+            _activeDrillViewModel = new DrillContentViewModel(ActiveDrill);
         }
     }
 }

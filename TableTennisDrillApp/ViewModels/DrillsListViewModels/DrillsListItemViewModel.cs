@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TableTennisDrillApp.Commands;
 using TableTennisDrillApp.Models;
+using TableTennisDrillApp.Stores;
 
 namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
 {
@@ -37,7 +38,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
                 OnPropertyChanged(nameof(IsSelected));
                 if (IsSelected)
                 {
-                    _drillsListViewModel.ActiveDrillStore.ActiveDrill = this.StoredDrill;
+                    ActiveDrillStore.GetStore().ActiveDrill = this.StoredDrill;
                 }                
             }
         }
@@ -53,7 +54,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             // TODO: Try to improve this code
             try
             {
-                if (File.Exists(@"C:\My_Projects\C#\TableTennisTraining\TableTennisDrillApp\TableTennisDrillApp\Images\" + _drill.Images.First()))
+                if (File.Exists($"{Directory.GetCurrentDirectory()}\\..\\..\\..\\Images\\{_drill.Images.First()}"))
                 {
                     FirstImage = _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).First();
                 }
@@ -67,7 +68,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
                 FirstImage = @"/TableTennisDrillApp;component/Images/nodrill.jpg";
             }
 
-            UpdateDrillContentCommand = new UpdateDrillContentCommand(_drillsListViewModel.ActiveDrillStore);
+            UpdateDrillContentCommand = new UpdateDrillContentCommand();
 
         }
     }

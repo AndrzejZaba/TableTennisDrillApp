@@ -10,19 +10,11 @@ namespace TableTennisDrillApp.Commands
 {
     public class UpdateDrillContentCommand : CommandBase
     {
-        private ActiveDrillStore _activeDrillStore;
-        public ActiveDrillStore ActiveDrillStore { get => _activeDrillStore; set => _activeDrillStore = value; }
-
-        public UpdateDrillContentCommand(ActiveDrillStore activeDrillStore)
-        {
-            _activeDrillStore = activeDrillStore;
-        }
+        public UpdateDrillContentCommand() {}
 
         public override void Execute(object? parameter)
         {
-            _activeDrillStore.ActiveDrillViewModel = new DrillContentViewModel(ActiveDrillStore.ActiveDrill);
+            ActiveDrillStore.GetStore().UpdateDrillStore();
         }
-
-
     }
 }

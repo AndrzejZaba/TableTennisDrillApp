@@ -28,7 +28,7 @@ namespace TableTennisDrillApp.ViewModels.DrillContentViewModels
             try
             {
                 Images = drill.Images.ToList();
-                if (File.Exists(@"C:\My_Projects\C#\TableTennisTraining\TableTennisDrillApp\TableTennisDrillApp\Images\" + Images.First()))
+                if (File.Exists($"{Directory.GetCurrentDirectory()}\\..\\..\\..\\Images\\{Images.First()}"))
                 {
                     Images = _drill.Images.Select(r => string.Concat(@"/TableTennisDrillApp;component/Images/", r)).ToList();
                 

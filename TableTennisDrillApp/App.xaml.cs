@@ -23,24 +23,24 @@ namespace TableTennisDrillApp
        // private DrillsLibraryMenuViewModel _drillsLibraryMenuViewModel;
         private readonly DrillLibrary _drillLibrary;
         private readonly IDrillsProvider _drillsProvider;
-        private ActiveDrillStore _activeDrillStore;
+        //private ActiveDrillStore _activeDrillStore;
 
         public App()
         {
             _drillsProvider = new DatabaseDrillsProvider();
             _drillLibrary = new DrillLibrary(_drillsProvider);
-            _activeDrillStore = new ActiveDrillStore();
+            ActiveDrillStore.GetStore();
 
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            var vm = new MainViewModel(_activeDrillStore);
+            var vm = new MainViewModel();
             vm.CurrentViewModel = CreateLibraryViewModel();
             
             
             //vm.ActiveDrillStore = _activeDrillStore;
 
-            //vm.ActiveDrillContentViewModel = _activeDrillStore.ActiveDrillViewModel;
+            //vm.ActiveDrillContentViewModel = ActiveDrillStore.GetStore().ActiveDrillViewModel;
             
             
             // Try to implemetn event taht will be fired when _activeDrillStore.ActiveDrillViewModel is changed. Then MainViewModel will be updated.
@@ -57,7 +57,7 @@ namespace TableTennisDrillApp
 
         private DrillsListViewModel CreateDrillsListViewModel()
         {
-            return new DrillsListViewModel(_drillLibrary, _activeDrillStore);
+            return new DrillsListViewModel(_drillLibrary);
         }
 
         private DrillsLibraryMenuViewModel CreateLibraryViewModel()
