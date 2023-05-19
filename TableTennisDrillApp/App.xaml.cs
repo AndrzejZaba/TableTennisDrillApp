@@ -23,7 +23,6 @@ namespace TableTennisDrillApp
        // private DrillsLibraryMenuViewModel _drillsLibraryMenuViewModel;
         private readonly DrillLibrary _drillLibrary;
         private readonly IDrillsProvider _drillsProvider;
-        //private ActiveDrillStore _activeDrillStore;
 
         public App()
         {
@@ -35,7 +34,7 @@ namespace TableTennisDrillApp
         protected override void OnStartup(StartupEventArgs e)
         {
             var vm = new MainViewModel();
-            vm.CurrentViewModel = CreateLibraryViewModel();
+            vm.MenuViewModel = CreateLibraryViewModel();
             
             
             //vm.ActiveDrillStore = _activeDrillStore;

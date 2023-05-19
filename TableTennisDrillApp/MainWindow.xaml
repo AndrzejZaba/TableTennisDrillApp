@@ -14,10 +14,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <views:DrillsListMenuView Grid.Column="0" DataContext="{Binding CurrentViewModel}"/>
+        <views:DrillsListMenuView Grid.Column="0" DataContext="{Binding MenuViewModel}"/>
 
         <Border Grid.Column="1" Background="#052D40" >
             <contentViews:DrillContentView DataContext="{Binding ActiveDrillContentViewModel}"/>
+        </Border>
+
+        <Border Grid.Column="1" Background="#052D40" Visibility="{Binding IntroductoryScreenVisibility}">
+            <views:IntorductiveScreenView />
         </Border>
 
     </Grid>
