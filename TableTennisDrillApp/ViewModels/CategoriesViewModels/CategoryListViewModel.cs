@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TableTennisDrillApp.KeyWords;
 using TableTennisDrillApp.ViewModels.DrillsListViewModels;
 
@@ -17,6 +18,44 @@ namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
         public List<string> SelectedCategories => _selectedCategories;
         public List<string> KeyWords { get; set; }
         public DrillsListViewModel DrillsListVM { get; set; }
+
+        private bool _isCategoriesMenuActive;
+        public bool IsCategoriesMenuActive
+        {
+            get
+            {
+                return _isCategoriesMenuActive;
+            }
+            set
+            {
+                _isCategoriesMenuActive = value;
+                OnPropertyChanged(nameof(IsCategoriesMenuActive));
+                if (_isCategoriesMenuActive == true)
+                {
+                    CategoriesMenuVisibility = Visibility.Visible;
+                }
+                else
+                {
+                    CategoriesMenuVisibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        public Visibility _categoriesMenuVisibility;
+        public Visibility CategoriesMenuVisibility
+        {
+            get
+            {
+                return _categoriesMenuVisibility;
+            }
+            set
+            {
+                _categoriesMenuVisibility = value;
+                OnPropertyChanged(nameof(CategoriesMenuVisibility));
+            }
+        }
+
+
         public CategoryListViewModel(DrillsListViewModel drillsListVM)
         {
             DrillsListVM = drillsListVM;
@@ -25,6 +64,8 @@ namespace TableTennisDrillApp.ViewModels.CategoriesViewModels
             KeyWords = new List<string>();
             GetListOfKeywords();
             PrepareCategories();
+
+            _categoriesMenuVisibility= Visibility.Collapsed;
         }
 
         /// <summary>

@@ -13,7 +13,19 @@
     </d:UserControl.DataContext>-->
     
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ToggleButton IsChecked="{Binding IsCategoriesMenuActive, Mode=TwoWay}" Background="Transparent" Margin="0" Padding="0">
+            <StackPanel>
+                <TextBlock Text="Filter exercices" HorizontalAlignment="Center" Foreground="white" FontSize="18"/>
+                <TextBlock Text="VVV" HorizontalAlignment="Center" Foreground="white"/>
+            </StackPanel>
+        </ToggleButton>
+
+        <ScrollViewer Visibility="{Binding CategoriesMenuVisibility}" VerticalScrollBarVisibility="Auto" Grid.Row="1">
             <ItemsControl ItemsSource="{Binding Categories}" HorizontalAlignment="Center">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

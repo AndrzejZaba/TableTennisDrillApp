@@ -75,7 +75,7 @@ namespace TableTennisDrillApp.Services.DrillsProviders
                 (PlayersNumber)drillDTO.PlayersNumber,
                 (DrillAdvancementLevel)drillDTO.AdvancementLevel,
                 drillDTO.KeyWords?.Split(',').ToList(),
-                drillDTO.Description?.Split(',').ToList(),
+                drillDTO.Description?.Split(';').ToList(),
                 drillDTO.Images?.Split(',').ToList(),
                 drillDTO.Videos?.Split(',').ToList()
                 );

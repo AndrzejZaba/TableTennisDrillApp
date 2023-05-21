@@ -16,6 +16,20 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
         private ObservableCollection<DrillsListItemViewModel>? _drills;
         private DrillLibrary _drillLibrary;
 
+        private int _numberOfSelectedDrills;
+        public int NumberOfSelectedDrills 
+        {
+            get
+            {
+                return _numberOfSelectedDrills;
+            }
+            set
+            {
+                _numberOfSelectedDrills = value;
+                OnPropertyChanged(nameof(NumberOfSelectedDrills));
+            }
+        }
+
         public ObservableCollection<DrillsListItemViewModel>? Drills
         {
             get
@@ -63,6 +77,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
                 {
                     _drills?.Add(new DrillsListItemViewModel(drill, this));
                 }
+                NumberOfSelectedDrills = _drills.Count();
             }            
         }
     }

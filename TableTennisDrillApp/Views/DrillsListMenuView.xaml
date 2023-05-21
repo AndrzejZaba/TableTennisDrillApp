@@ -19,14 +19,17 @@
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="180"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Training Library" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
 
-            <CategoriesViews:CategoryListView Grid.Row="1" DataContext="{Binding CategoryListVM}"/>
+            <TextBlock Grid.Row="1" DataContext="{Binding DrillsListVM}" Text="{Binding NumberOfSelectedDrills}" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
 
-            <DrillsListViews:DrillsListView Grid.Row="2" DataContext="{Binding DrillsListVM}" Margin="0 40 0 0"/>
+            <CategoriesViews:CategoryListView Grid.Row="2" DataContext="{Binding CategoryListVM}"/>
+
+            <DrillsListViews:DrillsListView Grid.Row="3" DataContext="{Binding DrillsListVM}" Margin="0 40 0 0"/>
 
         </Grid>
         <TextBlock Grid.Column="1" Text="vvv" Foreground="White" VerticalAlignment="Center"/>
