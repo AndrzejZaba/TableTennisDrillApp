@@ -20,7 +20,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="180"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Training Library" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
