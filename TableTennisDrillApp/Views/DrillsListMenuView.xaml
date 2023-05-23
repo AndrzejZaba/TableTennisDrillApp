@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:TableTennisDrillApp.Views"
              xmlns:CategoriesViews="clr-namespace:TableTennisDrillApp.Views.CategoriesViews"
              xmlns:DrillsListViews="clr-namespace:TableTennisDrillApp.Views.DrillsListViews"
+             xmlns:SearchDrillsViews="clr-namespace:TableTennisDrillApp.Views.SearchViews"
              xmlns:vms="clr-namespace:TableTennisDrillApp.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="320">
@@ -21,15 +22,18 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Training Library" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
 
             <TextBlock Grid.Row="1" DataContext="{Binding DrillsListVM}" Text="{Binding NumberOfSelectedDrills}" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
 
-            <CategoriesViews:CategoryListView Grid.Row="2" DataContext="{Binding CategoryListVM}"/>
+            <SearchDrillsViews:SearchDrillView Grid.Row="2" DataContext="{Binding DrillsSearchVM}"/>
 
-            <DrillsListViews:DrillsListView Grid.Row="3" DataContext="{Binding DrillsListVM}" Margin="0 40 0 0"/>
+            <CategoriesViews:CategoryListView Grid.Row="3" DataContext="{Binding CategoryListVM}"/>
+
+            <DrillsListViews:DrillsListView Grid.Row="4" DataContext="{Binding DrillsListVM}" Margin="0 40 0 0"/>
 
         </Grid>
         <TextBlock Grid.Column="1" Text="vvv" Foreground="White" VerticalAlignment="Center"/>

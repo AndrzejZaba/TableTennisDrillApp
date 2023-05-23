@@ -38,8 +38,8 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             }
             set
             {
+                _drills = value;
                 OnPropertyChanged(nameof(Drills));
-                _drills = value;    
             }
         }
         
@@ -51,8 +51,8 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             }
             set
             {
-                OnPropertyChanged(nameof(DrillLibrary));
                 _drillLibrary = value;
+                OnPropertyChanged(nameof(DrillLibrary));
             }
         }
 
