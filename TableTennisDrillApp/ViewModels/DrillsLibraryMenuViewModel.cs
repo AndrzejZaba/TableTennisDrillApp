@@ -22,7 +22,7 @@ namespace TableTennisDrillApp.ViewModels
         {
             DrillsListVM = drillsListViewModel;
             CategoryListVM = new CategoryListViewModel(DrillsListVM);
-            DrillsSearchVM = new DrillsSearchViewModel();
+            DrillsSearchVM = new DrillsSearchViewModel(DrillsListVM);
         }
     }
 }

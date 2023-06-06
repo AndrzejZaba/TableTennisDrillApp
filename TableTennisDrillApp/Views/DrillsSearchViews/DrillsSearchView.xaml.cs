@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TableTennisDrillApp.Views.SearchViews
+namespace TableTennisDrillApp.Views.DrillsSearchViews
 {
     /// <summary>
-    /// Interaction logic for SearchDrillView.xaml
+    /// Interaction logic for DrillsSearchView.xaml
     /// </summary>
-    public partial class SearchDrillView : UserControl
+    public partial class DrillsSearchView : UserControl
     {
-        public SearchDrillView()
+        public DrillsSearchView()
         {
             InitializeComponent();
         }

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:TableTennisDrillApp.Views"
              xmlns:CategoriesViews="clr-namespace:TableTennisDrillApp.Views.CategoriesViews"
              xmlns:DrillsListViews="clr-namespace:TableTennisDrillApp.Views.DrillsListViews"
-             xmlns:SearchDrillsViews="clr-namespace:TableTennisDrillApp.Views.SearchViews"
+             xmlns:SearchDrillsViews="clr-namespace:TableTennisDrillApp.Views.DrillsSearchViews"
              xmlns:vms="clr-namespace:TableTennisDrillApp.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="320">
@@ -29,7 +29,7 @@
 
             <TextBlock Grid.Row="1" DataContext="{Binding DrillsListVM}" Text="{Binding NumberOfSelectedDrills}" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
 
-            <SearchDrillsViews:SearchDrillView Grid.Row="2" DataContext="{Binding DrillsSearchVM}"/>
+            <SearchDrillsViews:DrillsSearchView Grid.Row="2" DataContext="{Binding DrillsSearchVM}"/>
 
             <CategoriesViews:CategoryListView Grid.Row="3" DataContext="{Binding CategoryListVM}"/>
 

@@ -17,6 +17,7 @@
     <None Remove="Images\Img3.jpg" />
     <None Remove="Images\logo-no-background.png" />
     <None Remove="Images\NoDrill.jpg" />
+    <None Remove="Images\test.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +38,7 @@
     <Resource Include="Images\Img3.jpg" />
     <Resource Include="Images\logo-no-background.png" />
     <Resource Include="Images\nodrill.jpg" />
+    <Resource Include="Images\test.jpg" />
   </ItemGroup>
 
 </Project>

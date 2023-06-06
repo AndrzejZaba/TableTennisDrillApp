@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Threading;
 using TableTennisDrillApp.Models;
 using TableTennisDrillApp.Services.DrillsProviders;
 using TableTennisDrillApp.Stores;
@@ -13,11 +16,11 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
     public class DrillsListViewModel : ViewModelBase
     {
 
-        private ObservableCollection<DrillsListItemViewModel>? _drills;
+        private ObservableCollection<DrillsListItemViewModel> _drills;
         private DrillLibrary _drillLibrary;
 
         private int _numberOfSelectedDrills;
-        public int NumberOfSelectedDrills 
+        public int NumberOfSelectedDrills
         {
             get
             {
@@ -30,7 +33,7 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             }
         }
 
-        public ObservableCollection<DrillsListItemViewModel>? Drills
+        public ObservableCollection<DrillsListItemViewModel> Drills
         {
             get
             {
@@ -42,12 +45,12 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
                 OnPropertyChanged(nameof(Drills));
             }
         }
-        
-        public DrillLibrary DrillLibrary 
-        { 
-            get 
-            { 
-                return _drillLibrary; 
+
+        public DrillLibrary DrillLibrary
+        {
+            get
+            {
+                return _drillLibrary;
             }
             set
             {
@@ -62,23 +65,66 @@ namespace TableTennisDrillApp.ViewModels.DrillsListViewModels
             _drillLibrary = drillLibrary;
 
             RefreshDrills();
-            
+
         }
 
         public void RefreshDrills()
         {
-            try
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                _drills.Clear();
-            }
-            finally
-            {
-                foreach (Drill drill in DrillLibrary.Drills)
+                try
                 {
-                    _drills?.Add(new DrillsListItemViewModel(drill, this));
+                    _drills.Clear();
                 }
-                NumberOfSelectedDrills = _drills.Count();
-            }            
+                finally
+                {
+                    foreach (Drill drill in DrillLibrary.Drills)
+                    {
+                        _drills?.Add(new DrillsListItemViewModel(drill, this));
+                    }
+                    NumberOfSelectedDrills = _drills.Count();
+                }
+            });
         }
+
+        public async void SelectDrillsByName(string selectString)
+        {
+            await Task.Run(() =>
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    if (selectString != "")
+                    {
+                        //_drills.Clear();
+                        var newCollection = new ObservableCollection<DrillsListItemViewModel>();
+                        foreach (DrillsListItemViewModel drillItemVM in Drills)
+                        {
+                            if (drillItemVM.DrillName.ToLower().Contains(selectString.ToLower()))
+                            {
+                                try
+                                {
+                                    newCollection.Add(drillItemVM);
+                                    //_drills.Remove(drillItemVM);
+                                }
+                                catch (Exception)
+                                {
+                                    continue;
+                                }
+
+                            }
+                        }
+                        Drills = newCollection;
+                    }
+                    else
+                    {
+                        RefreshDrills();
+                    }
+                    NumberOfSelectedDrills = _drills.Count();
+                });
+            });
+        }
+
+
+
     }
 }
